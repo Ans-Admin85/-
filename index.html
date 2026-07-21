@@ -292,10 +292,14 @@
   }
 
   @media (max-width:900px){
+    [id]{scroll-margin-top:90px;}
     .layout{flex-direction:column; padding-top:16px;}
     nav.toc{display:none;}
     main{padding:0 16px 80px;}
-    header.top{padding:18px 16px;}
+    header.top{
+      padding:14px 16px; position:sticky; top:3px; z-index:65;
+      box-shadow:var(--shadow-sm);
+    }
     nav.quicknav{display:none;}
     .mobile-menu-btn{display:flex;}
   }

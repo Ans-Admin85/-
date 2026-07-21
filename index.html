@@ -7,6 +7,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;600;700&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
+  @font-face{
+    font-family:'URW Geometric Arabic';
+    src: url('fonts/URWGEOMETRICARABIC-REGULAR.220826-1203.TTF') format('truetype');
+    font-weight:400; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'URW Geometric Arabic';
+    src: url('fonts/URWGEOMETRICARABIC-MEDIUM.220826-1204.TTF') format('truetype');
+    font-weight:500; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'URW Geometric Arabic';
+    src: url('fonts/URWGEOMETRICARABIC-SEMIBOLD.TTF') format('truetype');
+    font-weight:600; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'URW Geometric Arabic';
+    src: url('fonts/URWGEOMETRICARABIC-BOLD.220826-1204.TTF') format('truetype');
+    font-weight:700; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'URW Geometric Arabic';
+    src: url('fonts/URWGEOMETRICARABIC-BLACK.220826-1202.TTF') format('truetype');
+    font-weight:900; font-style:normal; font-display:swap;
+  }
   :root{
     --navy:#1c3a52;
     --navy-dark:#12283a;
@@ -26,9 +51,9 @@
   }
   body{
     margin:0; background:var(--cream); color:var(--ink);
-    font-family:'Tajawal', sans-serif; line-height:1.85; font-size:16.5px;
+    font-family:'URW Geometric Arabic', 'Tajawal', sans-serif; line-height:1.85; font-size:16.5px;
   }
-  h1,h2,h3,h4{font-family:'Markazi Text', serif; color:var(--navy); margin:0; font-weight:700;}
+  h1,h2,h3,h4{font-family:'URW Geometric Arabic', 'Markazi Text', serif; color:var(--navy); margin:0; font-weight:700;}
   p,li{margin:0 0 10px;}
   ul{padding-inline-start:22px; margin:0 0 14px;}
   a{color:inherit;}
@@ -43,18 +68,18 @@
     border-bottom:4px solid var(--gold);
   }
   .emblem{
-    display:block; height:84px; width:auto; margin:0 auto 18px;
-    background:var(--paper); padding:8px; border-radius:50%;
+    display:block; width:150px; height:auto; margin:0 auto 18px;
+    background:var(--paper); padding:10px 16px; border-radius:16px;
     box-shadow:0 3px 10px rgba(0,0,0,0.25);
   }
   header.top h1{color:var(--paper); font-size:2.5rem; line-height:1.3;}
   header.top .year{
-    display:inline-block; margin-top:14px; font-family:'Tajawal',sans-serif;
+    display:inline-block; margin-top:14px; font-family:'URW Geometric Arabic','Tajawal',sans-serif;
     font-weight:700; letter-spacing:1px; color:var(--gold); font-size:1.05rem;
     border:1px solid var(--gold); padding:6px 22px; border-radius:2px;
   }
   header.top .school-name{
-    font-family:'Tajawal',sans-serif; font-weight:900; font-size:1rem;
+    font-family:'URW Geometric Arabic','Tajawal',sans-serif; font-weight:900; font-size:1rem;
     letter-spacing:2px; text-transform:uppercase; color:#cdd9e2; margin-top:10px;
   }
 
@@ -68,7 +93,7 @@
     border-left:1px solid var(--line);
   }
   nav.toc .toc-label{
-    font-family:'Tajawal',sans-serif; font-weight:900; color:var(--navy);
+    font-family:'URW Geometric Arabic','Tajawal',sans-serif; font-weight:900; color:var(--navy);
     font-size:0.8rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; display:block;
   }
   nav.toc details{margin-bottom:6px;}

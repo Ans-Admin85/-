@@ -68,7 +68,7 @@
   }
   .quicknav-inner{
     max-width:1180px; margin:0 auto; padding:10px 20px;
-    display:flex; gap:10px; overflow-x:auto; scrollbar-width:thin;
+    display:flex; flex-wrap:wrap; gap:10px;
   }
   .quicknav-inner a{
     flex-shrink:0; text-decoration:none; font-weight:700; font-size:0.88rem;
@@ -78,6 +78,27 @@
   }
   .quicknav-inner a:hover, .quicknav-inner a:focus-visible{
     background:var(--navy); color:var(--paper); outline:none;
+  }
+
+  .quicknav-item{position:relative; flex-shrink:0;}
+  .quicknav-drop{
+    display:none; position:absolute; top:100%; right:0; z-index:80;
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.18);
+    min-width:240px; padding:8px; margin-top:8px;
+    flex-direction:column; gap:2px;
+  }
+  .quicknav-item:hover .quicknav-drop,
+  .quicknav-item:focus-within .quicknav-drop{
+    display:flex;
+  }
+  .quicknav-drop a{
+    background:none; border:none; border-radius:6px; padding:9px 12px;
+    font-size:0.85rem; font-weight:500; color:var(--ink); text-align:right;
+    white-space:normal;
+  }
+  .quicknav-drop a:hover, .quicknav-drop a:focus-visible{
+    background:rgba(201,162,75,0.18); color:var(--navy);
   }
 
   /* ===== BACK TO TOP ===== */
@@ -228,14 +249,92 @@
 
 <nav class="quicknav" aria-label="روابط سريعة">
   <div class="quicknav-inner">
-    <a href="#intro">المقدّمة</a>
-    <a href="#resources">الدعم والرعاية</a>
-    <a href="#sustainability">الحياة المدرسيّة</a>
-    <a href="#homework">التعلّم والتقويم</a>
-    <a href="#attendance-hours">الدوام والانضباط</a>
-    <a href="#meals">الحياة اليوميّة</a>
-    <a href="#campus-access">التواصل مع الأهل</a>
-    <a href="#appendices">الملحقات</a>
+
+    <div class="quicknav-item">
+      <a href="#intro">المقدّمة</a>
+      <div class="quicknav-drop">
+        <a href="#intro">المقدّمة، الرؤية، الرسالة، الفلسفة</a>
+        <a href="#programs">البرامج التعليميّة</a>
+        <a href="#language">لغة التواصل والتدريس</a>
+      </div>
+    </div>
+
+    <div class="quicknav-item">
+      <a href="#resources">الدعم والرعاية</a>
+      <div class="quicknav-drop">
+        <a href="#resources">قسم المصادر التعليميّة</a>
+        <a href="#academic-guidance">الإرشاد الأكاديميّ</a>
+        <a href="#psychosocial">الرعاية النفسيّة والاجتماعيّة</a>
+        <a href="#health">الرعاية الصحّيّة والإصابات</a>
+      </div>
+    </div>
+
+    <div class="quicknav-item">
+      <a href="#sustainability">الحياة المدرسيّة</a>
+      <div class="quicknav-drop">
+        <a href="#sustainability">التنمية المستدامة في المدرسة</a>
+        <a href="#class-distribution">توزيع الطلبة على الشُعَب</a>
+        <a href="#library">المكتبة المدرسيّة</a>
+        <a href="#story-committee">لجنة تقييم القصص الصفّيّة</a>
+        <a href="#technology">استخدام التكنولوجيا</a>
+        <a href="#trips">الرحلات المدرسيّة</a>
+        <a href="#sports">المنتخبات الرياضيّة</a>
+      </div>
+    </div>
+
+    <div class="quicknav-item">
+      <a href="#homework">التعلّم والتقويم</a>
+      <div class="quicknav-drop">
+        <a href="#homework">المهامّ البيتيّة</a>
+        <a href="#assessment">التقويم</a>
+        <a href="#reports">التقارير المدرسيّة</a>
+      </div>
+    </div>
+
+    <div class="quicknav-item">
+      <a href="#attendance-hours">الدوام والانضباط</a>
+      <div class="quicknav-drop">
+        <a href="#attendance-hours">الدوام وأوقات الدوام</a>
+        <a href="#absence">التغيّب</a>
+        <a href="#pass-fail">النجاح والإكمال والرسوب</a>
+        <a href="#departure">المغادرة خلال الدوام</a>
+        <a href="#gates">دخول وخروج الطلبة من الحرم المدرسيّ</a>
+        <a href="#b12">تطبيق B12</a>
+        <a href="#entry-exit-procedures">إجراءات الدخول والخروج</a>
+      </div>
+    </div>
+
+    <div class="quicknav-item">
+      <a href="#meals">الحياة اليوميّة</a>
+      <div class="quicknav-drop">
+        <a href="#meals">وجبات الطلبة</a>
+        <a href="#cafeteria">المقصف</a>
+        <a href="#celebrations">الاحتفال بالأعياد والمناسبات</a>
+        <a href="#uniform">الزيّ المدرسيّ</a>
+        <a href="#property">الممتلكات المدرسيّة</a>
+        <a href="#lost-found">المفقودات</a>
+      </div>
+    </div>
+
+    <div class="quicknav-item">
+      <a href="#campus-access">التواصل مع الأهل</a>
+      <div class="quicknav-drop">
+        <a href="#campus-access">دخول أولياء الأمر إلى الحرم المدرسيّ</a>
+        <a href="#communication">التواصل بين المدرسة وأولياء الأمر</a>
+        <a href="#participation">مشاركة أولياء الأمر في الأنشطة</a>
+        <a href="#helper-parent">وليّ الأمر المساعد</a>
+        <a href="#social-media">شبكات التواصل الاجتماعيّ</a>
+      </div>
+    </div>
+
+    <div class="quicknav-item">
+      <a href="#appendices">الملحقات</a>
+      <div class="quicknav-drop">
+        <a href="#appendices">قائمة الملحقات</a>
+        <a href="#appendix-buses">ملحق ١: تعليمات استخدام حافلات المدرسة</a>
+      </div>
+    </div>
+
   </div>
 </nav>
 

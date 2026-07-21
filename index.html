@@ -305,16 +305,26 @@
     .mobile-menu-btn{display:flex;}
   }
 
+  @media (max-width:900px){
+    header.top{
+      flex-wrap:nowrap;
+    }
+    .mobile-menu-btn{order:-1;}
+    .emblem{order:2;}
+    header.top .head-text{order:1;}
+  }
+
   @media (max-width:640px){
     body{font-size:15.5px;}
-    header.top{gap:10px; padding:12px 14px;}
-    .emblem{width:40px; border-radius:9px;}
+    header.top{gap:10px; padding:10px 14px;}
+    .emblem{width:36px; border-radius:8px;}
+    header.top .head-text{min-width:0; overflow:hidden;}
     header.top h1{
-      font-size:0.95rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
-      overflow:hidden; line-height:1.25;
+      font-size:0.92rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      line-height:1.3;
     }
-    header.top .school-name{font-size:0.68rem;}
-    header.top .year{font-size:0.65rem; padding:2px 8px; margin-top:4px;}
+    header.top .school-name{display:none;}
+    header.top .year{display:none;}
     .quicknav-inner{padding:8px 12px; gap:5px;}
     .quicknav-inner a{padding:7px 12px; font-size:0.8rem;}
     .quicknav-drop{

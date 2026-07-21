@@ -59,6 +59,39 @@
   a{color:inherit;}
 
   /* ===== HEADER ===== */
+  /* ===== QUICK NAV ===== */
+  nav.quicknav{
+    position:sticky; top:0; z-index:60;
+    background:var(--paper); border-bottom:1px solid var(--line);
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+  }
+  .quicknav-inner{
+    max-width:1180px; margin:0 auto; padding:10px 20px;
+    display:flex; gap:10px; overflow-x:auto; scrollbar-width:thin;
+  }
+  .quicknav-inner a{
+    flex-shrink:0; text-decoration:none; font-weight:700; font-size:0.88rem;
+    color:var(--navy); background:var(--cream); border:1px solid var(--line);
+    padding:8px 16px; border-radius:20px; white-space:nowrap;
+    transition:background .15s ease, color .15s ease;
+  }
+  .quicknav-inner a:hover, .quicknav-inner a:focus-visible{
+    background:var(--navy); color:var(--paper); outline:none;
+  }
+
+  /* ===== BACK TO TOP ===== */
+  #backToTop{
+    position:fixed; bottom:26px; left:26px; z-index:70;
+    width:48px; height:48px; border-radius:50%;
+    background:var(--navy); color:var(--gold); border:2px solid var(--gold);
+    font-size:1.3rem; cursor:pointer; display:none;
+    align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    transition:transform .15s ease;
+  }
+  #backToTop:hover{transform:translateY(-3px);}
+  #backToTop.show{display:flex;}
+
   header.top{
     background:linear-gradient(155deg, var(--navy), var(--navy-dark));
     color:var(--paper);
@@ -88,8 +121,8 @@
     max-width:1180px; margin:0 auto; display:flex; gap:0; align-items:flex-start;
   }
   nav.toc{
-    width:290px; flex-shrink:0; position:sticky; top:0;
-    max-height:100vh; overflow-y:auto; padding:34px 22px 60px 10px;
+    width:290px; flex-shrink:0; position:sticky; top:53px;
+    max-height:calc(100vh - 53px); overflow-y:auto; padding:34px 22px 60px 10px;
     border-left:1px solid var(--line);
   }
   nav.toc .toc-label{
@@ -187,6 +220,19 @@
   <h1>دليل التعليمات المدرسيّة<br>لأولياء الأمر والطلبة</h1>
   <span class="year">للعام الدراسيّ 2026 – 2027</span>
 </header>
+
+<nav class="quicknav" aria-label="روابط سريعة">
+  <div class="quicknav-inner">
+    <a href="#intro">المقدّمة</a>
+    <a href="#resources">الدعم والرعاية</a>
+    <a href="#sustainability">الحياة المدرسيّة</a>
+    <a href="#homework">التعلّم والتقويم</a>
+    <a href="#attendance-hours">الدوام والانضباط</a>
+    <a href="#meals">الحياة اليوميّة</a>
+    <a href="#campus-access">التواصل مع الأهل</a>
+    <a href="#appendices">الملحقات</a>
+  </div>
+</nav>
 
 <div class="layout">
 
@@ -802,6 +848,16 @@
 <footer class="site">
   <p>مدرسة عمّان الوطنيّة · دليل التعليمات المدرسيّة للعام الدراسيّ 2026–2027</p>
 </footer>
+
+<button id="backToTop" aria-label="العودة إلى الأعلى" title="العودة إلى الأعلى" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 500){ backToTopBtn.classList.add('show'); }
+    else{ backToTopBtn.classList.remove('show'); }
+  });
+</script>
 
 </body>
 </html>

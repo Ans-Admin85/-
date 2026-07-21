@@ -52,8 +52,8 @@
     --radius:18px;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth; overflow-x:hidden; width:100%;}
-  [id]{scroll-margin-top:118px;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
+  [id]{scroll-margin-top:calc(var(--header-h, 90px) + 20px);}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
@@ -117,6 +117,8 @@
     background:var(--surface);
     width:100%;
     box-sizing:border-box;
+    position:sticky; top:0; z-index:65;
+    box-shadow:var(--shadow-sm);
   }
   .header-inner{
     padding:22px 24px;
@@ -142,7 +144,7 @@
 
   /* ===== QUICK NAV (segmented tab bar) ===== */
   nav.quicknav{
-    position:sticky; top:3px; z-index:60;
+    position:sticky; top:var(--header-h, 90px); z-index:60;
     background:var(--surface);
     border-bottom:1px solid var(--line);
     box-shadow:var(--shadow-sm);
@@ -297,14 +299,10 @@
   }
 
   @media (max-width:900px){
-    [id]{scroll-margin-top:175px;}
+    [id]{scroll-margin-top:calc(var(--header-h, 130px) + 20px);}
     .layout{flex-direction:column; padding-top:16px;}
     nav.toc{display:none;}
     main{padding:0 16px 80px;}
-    header.top{
-      position:sticky; top:3px; z-index:65;
-      box-shadow:var(--shadow-sm);
-    }
     .header-inner{padding:14px 16px;}
     nav.quicknav{display:none;}
     .mobile-menu-btn{display:flex;}
@@ -333,7 +331,7 @@
     .quicknav-inner{padding:8px 12px; gap:5px;}
     .quicknav-inner a{padding:7px 12px; font-size:0.8rem;}
     .quicknav-drop{
-      position:fixed; top:118px; right:12px; left:12px; margin-top:0;
+      position:fixed; top:calc(var(--header-h, 90px) + 8px); right:12px; left:12px; margin-top:0;
       min-width:0; width:auto; max-height:60vh; overflow-y:auto;
     }
     .part-head h2{font-size:1.25rem;}
@@ -1119,6 +1117,17 @@
 <button id="backToTop" aria-label="العودة إلى الأعلى" title="العودة إلى الأعلى" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
 
 <script>
+  // Keep the quick-nav bar positioned right below the real header height
+  function updateHeaderHeight(){
+    const headerEl = document.querySelector('header.top');
+    if(headerEl){
+      document.documentElement.style.setProperty('--header-h', headerEl.offsetHeight + 'px');
+    }
+  }
+  updateHeaderHeight();
+  window.addEventListener('resize', updateHeaderHeight);
+  window.addEventListener('load', updateHeaderHeight);
+
   const backToTopBtn = document.getElementById('backToTop');
 
   // Mobile hamburger menu

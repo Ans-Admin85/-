@@ -78,6 +78,40 @@
     transition:transform .1s linear;
   }
 
+  /* ===== MOBILE HAMBURGER MENU ===== */
+  .mobile-menu-btn{
+    display:none; flex-direction:column; justify-content:center; gap:5px;
+    width:42px; height:42px; border-radius:10px; border:none; background:var(--surface-2);
+    cursor:pointer; flex-shrink:0;
+  }
+  .mobile-menu-btn span{
+    display:block; width:20px; height:2px; background:var(--primary); margin:0 auto; border-radius:2px;
+  }
+  .mobile-menu-overlay{
+    display:none; position:fixed; inset:0; z-index:200;
+    background:rgba(15,25,20,0.45);
+  }
+  .mobile-menu-overlay.open{display:block;}
+  .mobile-menu-panel{
+    position:absolute; top:0; right:0; height:100%; width:82%; max-width:340px;
+    background:var(--primary-dark); box-shadow:var(--shadow-lg);
+    padding:76px 26px 40px; overflow-y:auto;
+    transform:translateX(100%); transition:transform .28s ease;
+  }
+  .mobile-menu-overlay.open .mobile-menu-panel{transform:translateX(0);}
+  .mobile-menu-close{
+    position:absolute; top:18px; left:18px; width:38px; height:38px; border-radius:50%;
+    background:rgba(255,255,255,0.12); color:#fff; border:none; font-size:1.4rem; line-height:1;
+    cursor:pointer;
+  }
+  .mobile-menu-list{display:flex; flex-direction:column;}
+  .mobile-menu-list a{
+    display:block; color:#fff; font-weight:700; font-size:0.98rem;
+    padding:15px 4px; border-bottom:1px solid rgba(255,255,255,0.15);
+    text-decoration:none;
+  }
+  .mobile-menu-list a:hover, .mobile-menu-list a:focus-visible{color:var(--gold);}
+
   /* ===== HEADER ===== */
   header.top{
     background:var(--surface);
@@ -259,12 +293,11 @@
 
   @media (max-width:900px){
     .layout{flex-direction:column; padding-top:16px;}
-    nav.toc{
-      width:100%; position:relative; top:0; max-height:none;
-      margin-inline-start:0; margin:0 20px 16px;
-    }
+    nav.toc{display:none;}
     main{padding:0 16px 80px;}
     header.top{padding:18px 16px;}
+    nav.quicknav{display:none;}
+    .mobile-menu-btn{display:flex;}
   }
 
   @media (max-width:640px){
@@ -302,7 +335,55 @@
     <h1>دليل التعليمات المدرسيّة لأولياء الأمر والطلبة</h1>
     <span class="year">للعام الدراسيّ 2026 – 2027</span>
   </div>
+  <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="فتح القائمة" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<div id="mobileMenuOverlay" class="mobile-menu-overlay">
+  <div class="mobile-menu-panel">
+    <button id="mobileMenuClose" class="mobile-menu-close" aria-label="إغلاق القائمة">×</button>
+    <nav class="mobile-menu-list" aria-label="فهرس الدليل (جوال)">
+      <a href="#intro">المقدّمة</a>
+      <a href="#programs">البرامج التعليميّة</a>
+      <a href="#language">لغة التواصل والتدريس</a>
+      <a href="#resources">قسم المصادر التعليميّة</a>
+      <a href="#academic-guidance">الإرشاد الأكاديميّ</a>
+      <a href="#psychosocial">الرعاية النفسيّة والاجتماعيّة</a>
+      <a href="#health">الرعاية الصحّيّة والإصابات أثناء الدوام</a>
+      <a href="#sustainability">التنمية المستدامة في المدرسة</a>
+      <a href="#class-distribution">توزيع الطلبة على الشُعَب</a>
+      <a href="#library">المكتبة المدرسيّة</a>
+      <a href="#story-committee">لجنة تقييم القصص الصفّيّة</a>
+      <a href="#technology">استخدام التكنولوجيا</a>
+      <a href="#trips">الرحلات المدرسيّة</a>
+      <a href="#sports">المنتخبات الرياضيّة</a>
+      <a href="#homework">المهامّ البيتيّة</a>
+      <a href="#assessment">التقويم</a>
+      <a href="#reports">التقارير المدرسيّة</a>
+      <a href="#attendance-hours">الدوام وأوقات الدوام</a>
+      <a href="#absence">التغيّب</a>
+      <a href="#pass-fail">النجاح والإكمال والرسوب</a>
+      <a href="#departure">المغادرة خلال الدوام</a>
+      <a href="#gates">دخول وخروج الطلبة من الحرم المدرسيّ</a>
+      <a href="#b12">تطبيق B12</a>
+      <a href="#entry-exit-procedures">إجراءات الدخول والخروج</a>
+      <a href="#meals">وجبات الطلبة</a>
+      <a href="#cafeteria">المقصف</a>
+      <a href="#celebrations">الاحتفال بالأعياد والمناسبات</a>
+      <a href="#uniform">الزيّ المدرسيّ</a>
+      <a href="#property">الممتلكات المدرسيّة</a>
+      <a href="#lost-found">المفقودات</a>
+      <a href="#campus-access">دخول أولياء الأمر إلى الحرم المدرسيّ</a>
+      <a href="#communication">التواصل بين المدرسة وأولياء الأمر</a>
+      <a href="#participation">مشاركة أولياء الأمر في الأنشطة</a>
+      <a href="#helper-parent">وليّ الأمر المساعد</a>
+      <a href="#social-media">شبكات التواصل الاجتماعيّ</a>
+      <a href="#appendices">قائمة الملحقات</a>
+      <a href="#appendix-buses">ملحق ١: تعليمات استخدام حافلات المدرسة</a>
+    </nav>
+  </div>
+</div>
 
 <nav class="quicknav" aria-label="روابط سريعة">
   <div class="quicknav-inner">
@@ -1014,6 +1095,32 @@
 
 <script>
   const backToTopBtn = document.getElementById('backToTop');
+
+  // Mobile hamburger menu
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+  function openMobileMenu(){
+    mobileMenuOverlay.classList.add('open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu(){
+    mobileMenuOverlay.classList.remove('open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  if(mobileMenuBtn){
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+    mobileMenuOverlay.addEventListener('click', (e) => {
+      if(e.target === mobileMenuOverlay){ closeMobileMenu(); }
+    });
+    mobileMenuOverlay.querySelectorAll('.mobile-menu-list a').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+  }
   const progressBar = document.getElementById('scrollProgress');
 
   function updateOnScroll(){

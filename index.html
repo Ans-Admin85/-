@@ -62,6 +62,7 @@
     margin:0; background:var(--bg); color:var(--ink);
     font-family:'URW Geometric Arabic', 'Tajawal', sans-serif; line-height:1.8; font-size:16.5px;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
   h1,h2,h3,h4{font-family:'URW Geometric Arabic', 'Tajawal', sans-serif; color:var(--ink); margin:0; font-weight:700;}
   p,li{margin:0 0 10px;}
@@ -233,6 +234,8 @@
   }
   article.sec .warn::before{content:"⚠️ "; }
 
+  .table-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:12px; margin:10px 0 16px;}
+  .table-wrap table.simple{margin:0; min-width:480px;}
   table.simple{width:100%; border-collapse:separate; border-spacing:0; margin:10px 0 16px; font-size:0.9rem; border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm);}
   table.simple th, table.simple td{padding:10px 12px; text-align:right; border-bottom:1px solid var(--line);}
   table.simple th{background:var(--primary); color:#fff; font-weight:700; border-bottom:none;}
@@ -262,6 +265,27 @@
     }
     main{padding:0 16px 80px;}
     header.top{padding:18px 16px;}
+  }
+
+  @media (max-width:640px){
+    body{font-size:15.5px;}
+    header.top{gap:12px;}
+    .emblem{width:48px; border-radius:10px;}
+    header.top h1{font-size:1.05rem;}
+    header.top .school-name{font-size:0.72rem;}
+    header.top .year{font-size:0.7rem; padding:2px 10px;}
+    .quicknav-inner{padding:8px 12px; gap:5px;}
+    .quicknav-inner a{padding:7px 12px; font-size:0.8rem;}
+    .quicknav-drop{
+      position:fixed; top:118px; right:12px; left:12px; margin-top:0;
+      min-width:0; width:auto; max-height:60vh; overflow-y:auto;
+    }
+    .part-head h2{font-size:1.25rem;}
+    article.sec{padding:18px 16px;}
+    .intro-note{padding:16px 18px; font-size:0.9rem;}
+    #backToTop{width:42px; height:42px; bottom:16px; left:16px; font-size:1.1rem;}
+    nav.toc{padding:16px 14px; margin:0 12px 14px;}
+    .contact, .banner{padding:22px 18px;}
   }
 
   a:focus-visible, summary:focus-visible{outline:3px solid var(--gold); outline-offset:2px;}
@@ -632,7 +656,7 @@
       <article class="sec">
         <h3>المهامّ البيتيّة</h3>
         <p>تؤمن المدرسة بأنّ المهامّ البيتيّة وسيلة لتعزيز التعلّم وتنظيم الوقت وتحمّل المسؤوليّة، على ألّا تكون عبئًا على الطلبة وعائلاتهم. تزداد التوقّعات تدريجيًّا مع تقدّم الطلبة في الصفوف. يُرجى تأمين مكان مناسب لحلّ المهامّ دون التدخّل في العمل نفسه، وتشجيع الطلبة على التواصل مباشرة مع معلّميهم عند الحاجة.</p>
-        <table class="simple">
+        <div class="table-wrap"><table class="simple">
           <thead><tr><th>المرحلة</th><th>المهامّ البيتيّة (يوميًّا)</th><th>القراءة اليوميّة</th></tr></thead>
           <tbody>
             <tr><td>الروضة</td><td>لا يوجد</td><td>—</td></tr>
@@ -642,7 +666,7 @@
             <tr><td>الصفوف 7–8</td><td>~60 دقيقة</td><td>20–30 دقيقة</td></tr>
             <tr><td>الصفوف 9–12</td><td>تختلف حسب الموادّ</td><td>—</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <p style="font-size:0.85rem; color:#5a6a78;">الأوقات تقريبيّة، مع فروقات فرديّة، ولا تشمل يومي الخميس والجمعة.</p>
       </article>
 
@@ -676,7 +700,7 @@
       <article class="sec">
         <h3>الدوام المدرسيّ وأوقاته</h3>
         <p>تُطبَّق قوانين الانضباط الخاصّة بالمدرسة في حال تكرار التأخّر. ينتظر المناوب المسؤول 15 دقيقة فقط بعد انتهاء الدوام، ويتحمّل وليّ الأمر المسؤوليّة بعدها. في حال الأحوال الجوّيّة السيّئة أو الطوارئ، تُبلَّغ التعديلات عبر الرسائل النصّيّة (SMS).</p>
-        <table class="simple">
+        <div class="table-wrap"><table class="simple">
           <thead><tr><th>المرحلة</th><th>وقت الدوام</th><th>بدء الاستقبال</th></tr></thead>
           <tbody>
             <tr><td>الروضة</td><td>8:30 ص – 1:00 ظ</td><td>7:30 ص</td></tr>
@@ -684,7 +708,7 @@
             <tr><td>الصفوف 4–10</td><td>8:00 ص – 2:20 ظ</td><td>7:30 ص</td></tr>
             <tr><td>الصفوف 11–12</td><td>8:00 ص – 3:30 ظ</td><td>7:30 ص</td></tr>
           </tbody>
-        </table>
+        </table></div>
       </article>
 
       <article class="sec" id="absence">
@@ -719,7 +743,7 @@
 
       <article class="sec" id="gates">
         <h3>دخول وخروج الطلبة من الحرم المدرسيّ</h3>
-        <table class="simple">
+        <div class="table-wrap"><table class="simple">
           <thead><tr><th>الصفّ</th><th>البوّابة</th></tr></thead>
           <tbody>
             <tr><td>الروضة</td><td>بوّابة 3 (مدخل خاصّ بالروضة)</td></tr>
@@ -730,7 +754,7 @@
             <tr><td>العاشر – الحادي عشر</td><td>بوّابة 2 (المدخل الرئيس)</td></tr>
             <tr><td>الثاني عشر</td><td>بوّابة 7 (الشارع الفرعيّ خلف كوزمو)</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <div class="note">الإخوة الذين يبدأ دوامهم في الوقت نفسه يدخلون ويخرجون من البوّابة المخصّصة للصفّ الأصغر بينهم.</div>
       </article>
 
@@ -949,14 +973,14 @@
 
         <h4>استخدام الأجهزة الإلكترونيّة</h4>
         <p>يُسمح لطلبة الصفوف (4–12) باستخدام الأجهزة للاستماع أو المشاهدة فقط، بشرط وضع الجهاز على الصامت أو استخدام سمّاعات الأذن. يُمنع التصوير منعًا باتًّا، ويتحمّل الطالب مسؤوليّة جهازه، إذ إنّ المدرسة غير مسؤولة عن تلفه أو فقدانه.</p>
-        <table class="simple">
+        <div class="table-wrap"><table class="simple">
           <thead><tr><th>الصفوف</th><th>الأجهزة المسموحة</th></tr></thead>
           <tbody>
             <tr><td>4 – 5</td><td>جهاز لوحيّ (Tablet) أو حاسوب محمول (Laptop)</td></tr>
             <tr><td>6 – 9</td><td>حاسوب محمول (Laptop)</td></tr>
             <tr><td>10 – 12</td><td>حاسوب محمول (Laptop) وهاتف جوّال (Mobile)</td></tr>
           </tbody>
-        </table>
+        </table></div>
       </article>
     </section>
 

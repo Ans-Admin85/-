@@ -88,10 +88,11 @@
     display:block; width:20px; height:2px; background:var(--primary); margin:0 auto; border-radius:2px;
   }
   .mobile-menu-overlay{
-    display:none; position:fixed; inset:0; z-index:200;
+    display:none; position:fixed; inset:0; z-index:9999;
     background:rgba(15,25,20,0.45);
   }
   .mobile-menu-overlay.open{display:block;}
+  body.menu-open header.top, body.menu-open nav.quicknav{z-index:1 !important;}
   .mobile-menu-panel{
     position:absolute; top:0; right:0; height:100%; width:82%; max-width:340px;
     background:var(--primary-dark); box-shadow:var(--shadow-lg);
@@ -1137,11 +1138,13 @@
 
   function openMobileMenu(){
     mobileMenuOverlay.classList.add('open');
+    document.body.classList.add('menu-open');
     mobileMenuBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
   function closeMobileMenu(){
     mobileMenuOverlay.classList.remove('open');
+    document.body.classList.remove('menu-open');
     mobileMenuBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
